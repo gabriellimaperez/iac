@@ -1,9 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "dumbapi.fullname" . }}
-  labels:
-    {{- include "dumbapi.labels" . | nindent 4 }}
+  name: dumbapi
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
