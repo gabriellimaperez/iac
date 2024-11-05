@@ -1,0 +1,10 @@
+# Default values for dumbapi.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: glimap/dumbapi
+  pullPolicy: IfNotPresent
+  tag: ""
