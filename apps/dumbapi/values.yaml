@@ -8,3 +8,6 @@ image:
   repository: glimap/dumbapi
   pullPolicy: IfNotPresent
   tag: ""
+
+service:
+  port: 

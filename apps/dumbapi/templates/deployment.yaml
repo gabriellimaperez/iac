@@ -3,19 +3,20 @@ kind: Deployment
 metadata:
   name: dumbapi
 spec:
-  {{- if not .Values.autoscaling.enabled }}
-  replicas: {{ .Values.replicaCount }}
-  {{- end }}
+  replicas: 2
   selector:
     matchLabels:
-      {{- include "dumbapi.selectorLabels" . | nindent 6 }}
+      app: dumbapi
   template:
+    metadata:
+      labels:
+        app: dumbapi
     spec:
       containers:
-        - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: {{ .Values.service.port }}
-              protocol: TCP
+      - name: dumbapi
+        image: "glimap/dumbapi:4705e2c8c25bd37cd6685594a88411564a76a6c3"
+        imagePullPolicy: { ? { .Values.image.pullPolicy } }
+        ports:
+        - name: http
+          containerPort: { ? { .Values.service.port } }
+          protocol: TCP
