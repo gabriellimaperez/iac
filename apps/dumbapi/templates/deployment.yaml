@@ -15,8 +15,8 @@ spec:
       containers:
       - name: dumbapi
         image: "glimap/dumbapi:4705e2c8c25bd37cd6685594a88411564a76a6c3"
-        imagePullPolicy: { ? { .Values.image.pullPolicy } }
+        imagePullPolicy: IfNotPresent
         ports:
         - name: http
-          containerPort: { ? { .Values.service.port } }
+          containerPort: 8000
           protocol: TCP
